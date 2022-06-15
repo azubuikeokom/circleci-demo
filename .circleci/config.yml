@@ -28,7 +28,9 @@ jobs:
     steps:
       - run:
           name: Third step
-          command:  echo ${OWNER} is my name
+          command:  echo ${my_name} is my name
+          environment:
+            my_name: hi
           
           
 workflows:
