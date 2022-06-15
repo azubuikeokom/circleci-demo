@@ -28,7 +28,9 @@ jobs:
     steps:
       - run:
           name: Third step
-          command:  echo $OWNER is my name 
+          command:  echo $OWNER is my name
+          environment: 
+            OWNER:  azubuike
           
 workflows:
   # Name the workflow "welcome"
