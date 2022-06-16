@@ -12,26 +12,29 @@ jobs:
     steps:
       - run:
           name: First step
-          command: echo hello
-          
-  print_world:
-    docker: 
-      - image: circleci/node:13.8.0
-    steps:
-      - run:
-          name: Second step
-          command: echo world
+          command: echo hello zuby
   
-  print_name:
+  save_hello_world_output:
     docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run:
+      - image:  circleci/node:13.8.0
+      steps:
+        - run:
           name: Third step
-          command:  echo ${my_name} is my name
-          environment:
-            my_name: hi
-          
+          command: echo hello to zuby > output.txt
+        - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - output.txt
+  
+  print_output_file:
+    docker:
+      - image: circleci/node13.8.0
+      steps:
+        - run:
+          name: Fourth step
+          command: cat output.txt
+        - attach_workspace:
+          at: /tmp/workspace
           
 workflows:
   # Name the workflow "welcome"
@@ -40,11 +43,11 @@ workflows:
     jobs:
       - welcome/run
       - print_hello
-      - print_world:
+      - save_hello_world_output
           requires:
             - print_hello
-      - print_name:
+      - print_output_file
           requires:
-            - print_world
+            - save_hello_world_output
 
       #
