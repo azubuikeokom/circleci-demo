@@ -17,11 +17,11 @@ jobs:
   save_hello_world_output:
     docker:
       - image:  circleci/node:13.8.0
-      steps:
-        - run:
+    steps:
+      - run:
           name: Third step
           command: echo hello to zuby > output.txt
-        - persist_to_workspace:
+      - persist_to_workspace:
           root: /tmp/workspace
           paths:
             - output.txt
@@ -29,11 +29,11 @@ jobs:
   print_output_file:
     docker:
       - image: circleci/node13.8.0
-      steps:
-        - run:
+    steps:
+      - run:
           name: Fourth step
           command: cat output.txt
-        - attach_workspace:
+      - attach_workspace:
           at: /tmp/workspace
           
 workflows:
