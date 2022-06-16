@@ -44,10 +44,7 @@ workflows:
       - welcome/run
       - print_hello
       - save_hello_world_output
-          requires:
-            - print_hello
       - print_output_file
-          requires:
-            - save_hello_world_output
 
-      #
+
+      
