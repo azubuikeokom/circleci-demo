@@ -22,7 +22,7 @@ jobs:
           name: Third step
           command: echo hello to zuby > output.txt
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: ~/tmp/workspace
           paths:
             - output.txt
   
@@ -34,7 +34,7 @@ jobs:
           name: Fourth step
           command: cat output.txt
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/tmp/workspace
           
 workflows:
   # Name the workflow "welcome"
