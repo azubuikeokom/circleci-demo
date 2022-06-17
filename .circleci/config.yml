@@ -12,8 +12,8 @@ jobs:
         working_directory: /tmp
     steps:
       - run: |
-        mkdir -p workspace 
-        echo hello world > workspace/output.txt
+        mkdir  workspace 
+        echo "hello world" > workspace/output.txt
       - persist_to_workspace: 
           root: workspace
           paths:
