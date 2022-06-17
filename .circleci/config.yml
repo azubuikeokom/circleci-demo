@@ -9,7 +9,7 @@ jobs:
   save_hello_world_output:
     docker:
       - image: buildpack-deps:jessie
-        working_directory: /tmp
+    working_directory: /tmp
     steps:
       - run: mkdir  workspace 
       - run: echo "hello world" > workspace/output.txt
@@ -20,7 +20,7 @@ jobs:
   print_output_file:
     docker:
       - image: buildpack-deps:jessie
-        working_directory: /tmp
+    working_directory: /tmp
     steps:
       - run: echo world
       - attach_workspace:
