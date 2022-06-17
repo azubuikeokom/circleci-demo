@@ -12,7 +12,7 @@ jobs:
     working_directory: /tmp
     steps:
       - run: mkdir  workspace 
-      - run: echo "hello world" > workspace/output.txt
+      - run: echo "hello world zuby!" > workspace/output.txt
       - persist_to_workspace: 
           root: workspace
           paths:
@@ -22,9 +22,9 @@ jobs:
       - image: buildpack-deps:jessie
     working_directory: /tmp
     steps:
-      - run: echo world
       - attach_workspace:
-          at: /tmp/workspace
+          at: /workspace
+      - run: cat /workspace/output.txt
 workflows:
   # Name the workflow "welcome"
   workspace:
