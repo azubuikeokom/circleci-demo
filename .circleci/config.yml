@@ -6,7 +6,7 @@ commands:
     description: "Prints the environment variable $CIRCLE_WORKFLOW_ID to console"
     parameters:
       to:
-        type: String
+        type: Mapping
     steps:
       - run: echo <<parameters.to>>
 # Use a package of configuration called an orb.
