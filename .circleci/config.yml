@@ -6,7 +6,7 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
 jobs:
-  save_hello_world_output:
+  - save_hello_world_output:
     docker:
       - image: buildpack-deps:jessie
     working_directory: /tmp
@@ -17,7 +17,7 @@ jobs:
           root: workspace
           paths:
             - output.txt
-  print_output_file:
+  - print_output_file:
     docker:
       - image: buildpack-deps:jessie
     working_directory: /tmp
