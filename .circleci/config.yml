@@ -35,7 +35,12 @@ jobs:
     docker:
       - image:  cimg/base:2022.03
     steps:
-      - print_pipeline_id
+      - print_pipeline_id:
+      - run:  
+          name: Send "Hello Fail" to console
+          command:  echo Hello Fail!
+          when: on_fail
+
       
 workflows:
   # Name the workflow "welcome"
