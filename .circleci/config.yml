@@ -9,26 +9,22 @@ jobs:
   save_hello_world_output:
     docker:
       - image: buildpack-deps:jessie
-    
-      steps:
-        - run: mkdir  workspace 
-        - run: echo "hello world zuby!" > workspace/output.txt
-        - persist_to_workspace: 
-            root: workspace
-            paths:
-              - output.txt
     working_directory: /tmp
-
+    steps:
+      - run: mkdir  workspace 
+      - run: echo "hello world zuby!" > workspace/output.txt
+      - persist_to_workspace: 
+          root: workspace
+          paths:
+            - output.txt
   print_output_file:
     docker:
       - image: buildpack-deps:jessie
-    
-      steps:
-        - attach_workspace:
-            at: /workspace
-        - run: cat /workspace/output.txt
     working_directory: /tmp
-    
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run: cat /workspace/output.txt
 workflows:
   # Name the workflow "welcome"
   workspace:
