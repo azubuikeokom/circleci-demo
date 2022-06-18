@@ -35,7 +35,7 @@ jobs:
     docker:
       - image:  cimg/base:2022.03
     steps:
-      - print_pipeline_id:
+      - print_pipeline_id
       
 workflows:
   # Name the workflow "welcome"
